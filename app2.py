@@ -4,6 +4,9 @@ import random
 # ---------------- PAGE CONFIG ----------------
 st.set_page_config(page_title="Pick a Finger 💖", page_icon="👉")
 
+# ---------------- RESULT PLACEHOLDER (TOP) ----------------
+result_container = st.empty()
+
 # ---------------- CUSTOM STYLE ----------------
 st.markdown("""
     <style>
@@ -49,27 +52,25 @@ if st.button("✨ Pick for me ✨"):
     else:
         choice = random.choice([1, 2])
 
-        # 🎈 Animation
         st.balloons()
 
-        st.write("")
-
-        if choice == 1:
-            st.markdown(
-                f"<h2 style='text-align: center; color: hotpink;'>Aarush has selected Index Finger 💖</h2>",
-                unsafe_allow_html=True
-            )
-            st.markdown(
-                f"<h3 style='text-align: center;'>{option1} 😋</h3>",
-                unsafe_allow_html=True
-            )
-
-        else:
-            st.markdown(
-                f"<h2 style='text-align: center; color: violet;'>Aarush has selected Small Finger 💕</h2>",
-                unsafe_allow_html=True
-            )
-            st.markdown(
-                f"<h3 style='text-align: center;'>{option2} 😋</h3>",
-                unsafe_allow_html=True
-            )
+        # ---------------- SHOW RESULT AT TOP ----------------
+        with result_container:
+            if choice == 1:
+                st.markdown(
+                    f"<h2 style='text-align: center; color: hotpink;'>Aarush has selected Index Finger 💖</h2>",
+                    unsafe_allow_html=True
+                )
+                st.markdown(
+                    f"<h3 style='text-align: center;'>{option1} 😋</h3>",
+                    unsafe_allow_html=True
+                )
+            else:
+                st.markdown(
+                    f"<h2 style='text-align: center; color: violet;'>Aarush has selected Small Finger 💕</h2>",
+                    unsafe_allow_html=True
+                )
+                st.markdown(
+                    f"<h3 style='text-align: center;'>{option2} 😋</h3>",
+                    unsafe_allow_html=True
+                )
